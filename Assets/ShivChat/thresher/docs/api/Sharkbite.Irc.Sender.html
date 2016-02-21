@@ -1,0 +1,21 @@
+﻿<html dir="LTR"><head><META http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5"><title>Sender Class</title><xml></xml><link rel="stylesheet" type="text/css" href="MSDN.css"></head><body id="bodyID" class="dtBODY"><div id="nsbanner"><div id="bannerrow1"><table class="bannerparthead" cellspacing="0"><tr id="hdr"><td class="runninghead">Thresher 1.2 Class Documentation</td><td class="product"></td></tr></table></div><div id="TitleRow"><h1 class="dtH1">Sender Class</h1></div></div><div id="nstext"><p>
+            This class is used to send all the IRC commands except for CTCP and DCC
+            messages. Instances of this class are retrieved as properties of the Connection
+            object. All methods in this class are thread safe.
+            </p><p>For a list of all members of this type, see <a href="Sharkbite.Irc.SenderMembers.html">Sender Members</a>.</p><p><a href="ms-help://MS.NETFrameworkSDKv1.1/cpref/html/frlrfSystemObjectClassTopic.htm">System.Object</a><br>   <a href="Sharkbite.Irc.CommandBuilder.html">CommandBuilder</a><br>      <b>Sender</b></p><div class="syntax"><span class="lang">[Visual Basic]</span><br>Public Class Sender<div>Inherits CommandBuilder</div></div><div class="syntax"><span class="lang">[C#]</span><div>public class Sender : CommandBuilder</div></div><h4 class="dtH4">Remarks</h4><p>Due to the asynchronous nature of IRC, none of these commands 
+            have a return value. To get that value (or possibly an error) the client must
+            handle the corresponding event. For example, to check if a user is online
+            the client would send <a href="Sharkbite.Irc.Sender.Ison.html">Ison</a> then check the value of the 
+            <a href="Sharkbite.Irc.Listener.OnIson.html">OnIson</a> event to receive the answer.</p><p>When a command can return an error, the possible error replies
+            are listed. An error message will be sent via the <a href="Sharkbite.Irc.Listener.OnError.html">OnError</a> event
+            with one of the listed error codes as a parameter. When checking for these 
+            errors use the constants from <a href="Sharkbite.Irc.ReplyCode.html">ReplyCode</a>.
+            </p><p>The maximum length of any command string sent to the 
+            server is 512 characters.</p><h4 class="dtH4">Example</h4><p><pre class="code">
+            //Create a Connection object which will automatically create its own Sender
+            Connection connection = new Connection( args, false, false );	
+            //Send commands using the Connection object and its Sender instance.
+            //No need to keep a separate reference to the Sender object
+            connection.Sender.PublicMessage("#thresher", "hello");
+            </pre></p><h4 class="dtH4">Requirements</h4><p><b>Namespace: </b><a href="Sharkbite.Irc.html">Sharkbite.Irc</a></p><p><b>Assembly: </b>Sharkbite.Thresher (in Sharkbite.Thresher.dll)
+					</p><h4 class="dtH4">See Also</h4><p><a href="Sharkbite.Irc.SenderMembers.html">Sender Members</a> | <a href="Sharkbite.Irc.html">Sharkbite.Irc Namespace</a></p><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e" viewastext="true" style="display: none;"><param name="Keyword" value="Sender class, about Sender class"></object><hr><div id="footer"><p><a>Aaron Hunter</a></p><p>Generated from assembly Sharkbite.Thresher [1.2.0.0]</p></div></div></body></html>

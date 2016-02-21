@@ -1,0 +1,61 @@
+﻿<html dir="LTR"><head><META http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5"><title>Connection Properties</title><xml></xml><link rel="stylesheet" type="text/css" href="MSDN.css"></head><body id="bodyID" class="dtBODY"><div id="nsbanner"><div id="bannerrow1"><table class="bannerparthead" cellspacing="0"><tr id="hdr"><td class="runninghead">Thresher 1.2 Class Documentation</td><td class="product"></td></tr></table></div><div id="TitleRow"><h1 class="dtH1">Connection Properties</h1></div></div><div id="nstext"><p>The properties of the <b>Connection</b> class are listed below. For a complete list of <b>Connection</b> class members, see the <a href="Sharkbite.Irc.ConnectionMembers.html">Connection Members</a> topic.</p><h4 class="dtH4">Public Instance Properties</h4><div class="tablediv"><table class="dtTABLE" cellspacing="0">
+<tr VALIGN="top"><td width="50%"><img src="pubproperty.gif"><a href="Sharkbite.Irc.Connection.Connected.html">Connected</a></td><td width="50%">
+            A read-only property indicating whether a connection 
+            has been opened with the IRC server (but not whether 
+            registration has succeeded).
+            </td></tr>
+<tr VALIGN="top"><td width="50%"><img src="pubproperty.gif"><a href="Sharkbite.Irc.Connection.ConnectionData.html">ConnectionData</a></td><td width="50%">
+            The collection of data used to establish this connection.
+            </td></tr>
+<tr VALIGN="top"><td width="50%"><img src="pubproperty.gif"><a href="Sharkbite.Irc.Connection.CtcpListener.html">CtcpListener</a></td><td width="50%">
+            The object that parses CTCP messages and notifies the appropriate delegate.
+            </td></tr>
+<tr VALIGN="top"><td width="50%"><img src="pubproperty.gif"><a href="Sharkbite.Irc.Connection.CtcpResponder.html">CtcpResponder</a></td><td width="50%">
+            Sets an automatic responder to Ctcp queries.
+            </td></tr>
+<tr VALIGN="top"><td width="50%"><img src="pubproperty.gif"><a href="Sharkbite.Irc.Connection.CtcpSender.html">CtcpSender</a></td><td width="50%">
+            The object used to send CTCP commands to the IRC server.
+            </td></tr>
+<tr VALIGN="top"><td width="50%"><img src="pubproperty.gif"><a href="Sharkbite.Irc.Connection.EnableCtcp.html">EnableCtcp</a></td><td width="50%">
+            Whether Ctcp commands should be processed and if
+            Ctcp events will be raised.
+            </td></tr>
+<tr VALIGN="top"><td width="50%"><img src="pubproperty.gif"><a href="Sharkbite.Irc.Connection.EnableDcc.html">EnableDcc</a></td><td width="50%">
+            Whether DCC requests should be processed or ignored 
+            by this Connection. Since the DccListener is a singleton and
+            shared by all Connections, listeners to DccListener events should
+            be manually removed when no longer needed.
+            </td></tr>
+<tr VALIGN="top"><td width="50%"><img src="pubproperty.gif"><a href="Sharkbite.Irc.Connection.HandleNickTaken.html">HandleNickTaken</a></td><td width="50%">
+            By default the connection itself will handle the case
+            where, while attempting to register the client's nick
+            is already in use. It does this by simply appending
+            2 random numbers to the end of the nick. 
+            </td></tr>
+<tr VALIGN="top"><td width="50%"><img src="pubproperty.gif"><a href="Sharkbite.Irc.Connection.IdleTime.html">IdleTime</a></td><td width="50%">
+            The amount of time that has passed since the client
+            sent a command to the IRC server.
+            </td></tr>
+<tr VALIGN="top"><td width="50%"><img src="pubproperty.gif"><a href="Sharkbite.Irc.Connection.Listener.html">Listener</a></td><td width="50%">
+            The object that parses messages and notifies the appropriate delegate.
+            </td></tr>
+<tr VALIGN="top"><td width="50%"><img src="pubproperty.gif"><a href="Sharkbite.Irc.Connection.Name.html">Name</a></td><td width="50%">
+            A user friendly name of this Connection in the form 'nick@host'
+            </td></tr>
+<tr VALIGN="top"><td width="50%"><img src="pubproperty.gif"><a href="Sharkbite.Irc.Connection.Registered.html">Registered</a></td><td width="50%">
+            A read-only property indicating whether the connection 
+            has been opened with the IRC server and the 
+            client has been successfully registered.
+            </td></tr>
+<tr VALIGN="top"><td width="50%"><img src="pubproperty.gif"><a href="Sharkbite.Irc.Connection.Sender.html">Sender</a></td><td width="50%">
+            The object used to send commands to the IRC server.
+            </td></tr>
+<tr VALIGN="top"><td width="50%"><img src="pubproperty.gif"><a href="Sharkbite.Irc.Connection.ServerProperties.html">ServerProperties</a></td><td width="50%">
+            A read-only collection of string key/value pairs
+            representing IRC server proprties.
+            </td></tr>
+<tr VALIGN="top"><td width="50%"><img src="pubproperty.gif"><a href="Sharkbite.Irc.Connection.TextEncoding.html">TextEncoding</a></td><td width="50%">
+            Sets the text encoding used by the read and write streams.
+            Must be set before Connect() is called and should not be changed
+            while the connection is processing messages.
+            </td></tr></table></div><h4 class="dtH4">See Also</h4><p><a href="Sharkbite.Irc.Connection.html">Connection Class</a> | <a href="Sharkbite.Irc.html">Sharkbite.Irc Namespace</a></p><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e" viewastext="true" style="display: none;"><param name="Keyword" value="Connection class, properties"></object><hr><div id="footer"><p><a>Aaron Hunter</a></p><p>Generated from assembly Sharkbite.Thresher [1.2.0.0]</p></div></div></body></html>

@@ -1,0 +1,61 @@
+Basic Setup
+-----------
+After adding the prefab intro your project, you first need to adjust the ShivChat values, in that script you gona set:
+-Server: The IRC Server IP or hostname
+-Port: The default is 6667, set it to wharever you need.
+-ServerPassword: (optional, use only if needed).
+-Nick: this is the default nick, you can set it here, or change it later by using methods or messages.
+-Use Identd: Identd server for nick (Optional, some IRC servers need it)
+
+-Colors: There is: GeneralColor, PrivateColor, SystemColor and UserListColor, these are the colors to be used for those situacions.
+The color can be specified in the traditional HTML format, you can refer to http://docs.unity3d.com/Manual/StyledText.html for options.
+
+Then you have tab 1, tab 2, tab 3, tab 4, just leave be for now.
+
+Tab Values:
+After ShivChat is configured, next you need to configure each tab, look for child objects in "ShivChat->Canvas->Panel", 
+there you must see Tab1, Tab2, Tab3, Tab4 and a few other objects.
+
+Click on Tab1, there you will see the script "ShivChatTab" is attached to it, on it you will have:
+-Tab Name : Here you will place the name of the tab, it will change ingame.
+-Channel : This is the channel this tab will join in on the server
+-ChannelPassword : optional, set if needed 
+-Is Default: if this is marked as true, this tab will be the one active when the chat opens, you can have 1 or none as default.
+
+Then you will have to do the same for the other tabs.
+
+Removing a Tab
+--------------
+In order to remove, lets say, Tab4, from the chat you only need to do 2 things:
+1) On ShivChat script, set Tab4 to null.
+2) On "ShivChat->Canvas->Panel" de-activate Tab4 gameobject.
+
+Adding a Tab:
+-------------
+This is more tricky, on the tab part clone any Tab, then move only its button, and on this button you gona need to add the 
+"Component" gameobject of the tab you clone this from, and set it to disable like the others.
+
+On the ShivChat script you gona need to add it manually to several places, just check where "_tab4" and "tab4" are used, 
+you gona need to add the 5th tab to every one of these places.
+
+
+Set Nick and Connect externally
+-------------------------------
+Generally you dont want the user to have to set its own nick and press connect, the simple way to do this is:
+1) Disable "ShivChat->Canvas->Panel" "Connect" gameobject, that will remove the nick input and connect button.
+2) Use "SendMessage()" or GetComponent to use a ShivChat method called "ExtConnect(New Nick)", that will send the nick and order it to connect,
+   in the case you dont want to change the nick on this way, just call "Connect()".
+
+The User block system:
+----------------------
+This is a simple string filter stored on a string list "blockedNicks" on ShivChat script, this list holds the nicks of the blocked users, if you want
+to make the list permanent you will need to find a way to save the list somewhere, it may be a file or db on "OnApplicationQuit()", and them load it
+on "Start()".
+
+Chat Commands:
+--------------
+/hp list the commands
+/pm nick something = Sends a private message to this user.
+/bk nick = Add this user to your blocked list.
+/rb nick = Remove this user from your blocked list.
+/vb = Shows users in your blocked list.

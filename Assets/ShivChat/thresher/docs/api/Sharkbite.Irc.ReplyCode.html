@@ -1,0 +1,978 @@
+﻿<html dir="LTR"><head><META http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5"><title>ReplyCode Enumeration</title><xml></xml><link rel="stylesheet" type="text/css" href="MSDN.css"></head><body id="bodyID" class="dtBODY"><div id="nsbanner"><div id="bannerrow1"><table class="bannerparthead" cellspacing="0"><tr id="hdr"><td class="runninghead">Thresher 1.2 Class Documentation</td><td class="product"></td></tr></table></div><div id="TitleRow"><h1 class="dtH1">ReplyCode Enumeration</h1></div></div><div id="nstext"><p>
+            Numeric message codes taken from RFC 2812
+            </p><div class="syntax"><span class="lang">[Visual Basic]</span><br>Public Enum ReplyCode</div><div class="syntax"><span class="lang">[C#]</span><div>public enum ReplyCode</div></div><h4 class="dtH4">Members</h4><div class="tablediv"><table class="dtTABLE" cellspacing="0"><tr valign="top"><th width="50%">Member Name</th><th width="50%">Description</th></tr>
+<tr valign="top"><td width="50%"><b>RPL_WELCOME</b></td><td width="50%">
+            IRC: Welcome to the Internet Relay Networ [nick]![user]@[host]
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_YOURHOST</b></td><td width="50%">
+            IRC: Your host is [servername], running version [ver]
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_CREATED</b></td><td width="50%">
+            IRC: This server was created [date]
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_MYINFO</b></td><td width="50%">
+            IRC: [servername] [version] [available user modes [available channel modes]
+            
+            Description: The server sends Replies 001 to 004 to a user upon
+            successful registration.
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_BOUNCE</b></td><td width="50%">
+            IRC: Try server [server name], port [port number]
+            
+            Description: Sent by the server to a user to suggest an alternative
+            server. This is often used when the connection is
+            refused because the server is already full.
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_USERHOST</b></td><td width="50%">
+            IRC: :*1[reply] *( " " [reply] )
+            
+            Description: Reply format used by USERHOST to list replies to
+            the query list. The reply string is composed as
+            follows:
+            reply = nickname [ "*" ] "=" ( "+" / "-" ) hostname
+            The '*' indicates whether the client has registered
+            as an Operator. The '-' or '+' characters represent
+            whether the client has set an AWAY message or not
+            respectively.
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_ISON</b></td><td width="50%">
+            IRC: :*1[nick] *( " " [nick] )
+            
+            Description: Reply format used by ISON to list replies to the
+            query list.
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_AWAY</b></td><td width="50%">
+            IRC: [nick] :[away message]
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_UNAWAY</b></td><td width="50%">
+            IRC: :You are no longer marked as being away
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_NOWAWAY</b></td><td width="50%">
+            IRC: :You have been marked as being away
+            
+            Description: These replies are used with the AWAY command (if
+            allowed). RPL_AWAY is sent to any client sending a
+            PRIVMSG to a client which is away. RPL_AWAY is only
+            sent by the server to which the client is connected.
+            Replies RPL_UNAWAY and RPL_NOWAWAY are sent when the
+            client removes and sets an AWAY message.
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_WHOISUSER</b></td><td width="50%">
+            IRC: [nick] [user] [host] * :[real name]
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_WHOISSERVER</b></td><td width="50%">
+            IRC: [nick] [server] :[server info]
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_WHOISOPERATOR</b></td><td width="50%">
+            IRC: [nick] :is an IRC operator
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_WHOISIDLE</b></td><td width="50%">
+            IRC: [nick] [integer] :seconds idle
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_ENDOFWHOIS</b></td><td width="50%">
+            IRC: [nick] :End of WHOIS list
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_WHOISCHANNELS</b></td><td width="50%">
+            IRC: [nick] :*( ( "@" / "+" ) [channel] " " )
+            
+            Description: Replies 311 - 313, 317 - 319 are all replies
+            generated in response to a WHOIS message. Given that
+            there are enough parameters present, the answering
+            server MUST either formulate a reply out of the above
+            numerics (if the query nick is found) or return an
+            error reply. The '*' in RPL_WHOISUSER is there as
+            the literal character and not as a wild card. For
+            each reply set, only RPL_WHOISCHANNELS may appear
+            more than once (for long lists of channel names).
+            The '@' and '+' characters next to the channel name
+            indicate whether a client is a channel operator or
+            has been granted permission to speak on a moderated
+            channel. The RPL_ENDOFWHOIS reply is used to mark
+            the end of processing a WHOIS message.
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_WHOWASUSER</b></td><td width="50%">
+            IRC: [nick] [user] [host] * :[real name]
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_ENDOFWHOWAS</b></td><td width="50%">
+            IRC: [nick] :End of WHOWAS
+            
+            Description: When replying to a WHOWAS message, a server MUST use
+            the replies RPL_WHOWASUSER, RPL_WHOISSERVER or
+            ERR_WASNOSUCHNICK for each nickname in the presented
+            list. At the end of all reply batches, there MUST
+            be RPL_ENDOFWHOWAS (even if there was only one reply
+            and it was an error).
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_LISTSTART</b></td><td width="50%">
+            
+            Description: Obsolete. Not used.
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_LIST</b></td><td width="50%">
+            IRC: [channel] [# visible] :[topic]
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_LISTEND</b></td><td width="50%">
+            IRC: :End of LIST
+            
+            Description: Replies RPL_LIST, RPL_LISTEND mark the actual replies
+            with data and end of the server's response to a LIST
+            command. If there are no channels available to return,
+            only the end reply MUST be sent.
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_UNIQOPIS</b></td><td width="50%">
+            IRC: [channel] [nickname]
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_CHANNELMODEIS</b></td><td width="50%">
+            IRC: [channel] [mode] [mode params]
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_NOTOPIC</b></td><td width="50%">
+            IRC: [channel] :No topic is set
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_TOPIC</b></td><td width="50%">
+            IRC: [channel] :[topic]
+            
+            Description: When sending a TOPIC message to determine the
+            channel topic, one of two replies is sent. If
+            the topic is set, RPL_TOPIC is sent back else
+            RPL_NOTOPIC.
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_INVITING</b></td><td width="50%">
+            IRC: [channel] [nick]
+            
+            Description: Returned by the server to indicate that the
+            attempted INVITE message was successful and is
+            being passed onto the end client.
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_SUMMONING</b></td><td width="50%">
+            IRC: [user] :Summoning user to IRC
+            
+            Description: Returned by a server answering a SUMMON message to
+            indicate that it is summoning that user.
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_INVITELIST</b></td><td width="50%">
+            IRC: [channel] [invitemask]
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_ENDOFINVITELIST</b></td><td width="50%">
+            IRC: [channel] :End of channel invite list
+            
+            Description: When listing the 'invitations masks' for a given channel,
+            a server is required to send the list back using the
+            RPL_INVITELIST and RPL_ENDOFINVITELIST messages. A
+            separate RPL_INVITELIST is sent for each active mask.
+            After the masks have been listed (or if none present) a
+            RPL_ENDOFINVITELIST MUST be sent.
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_EXCEPTLIST</b></td><td width="50%">
+            IRC: [channel] [exceptionmask]
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_ENDOFEXCEPTLIST</b></td><td width="50%">
+            IRC: [channel] :End of channel exception list
+            
+            Description: When listing the 'exception masks' for a given channel,
+            a server is required to send the list back using the
+            RPL_EXCEPTLIST and RPL_ENDOFEXCEPTLIST messages. A
+            separate RPL_EXCEPTLIST is sent for each active mask.
+            After the masks have been listed (or if none present)
+            a RPL_ENDOFEXCEPTLIST MUST be sent.
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_VERSION</b></td><td width="50%">
+            IRC: [version].[debuglevel] [server] :[comments]
+            
+            Description: Reply by the server showing its version details.
+            The [version] is the version of the software being
+            used (including any patchlevel revisions) and the
+            [debuglevel] is used to indicate if the server is
+            running in "debug mode".
+            The "comments" field may contain any comments about
+            the version or further version details.
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_WHOREPLY</b></td><td width="50%">
+            IRC: [channel] [user] [host] [server] [nick ( "H" / "G" ] ["*"] [ ( "@" / "+" ) :[hopcount] [real name]
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_ENDOFWHO</b></td><td width="50%">
+            IRC: [name] :End of WHO list
+            
+            Description: The RPL_WHOREPLY and RPL_ENDOFWHO pair are used
+            to answer a WHO message. The RPL_WHOREPLY is only
+            sent if there is an appropriate match to the WHO
+            query. If there is a list of parameters supplied
+            with a WHO message, a RPL_ENDOFWHO MUST be sent
+            after processing each list item with [name] being
+            the item.
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_NAMREPLY</b></td><td width="50%">
+            IRC: ( "=" / "*" / "@" ) [channel :[ "@" / "+" ] [nick] *( " " [ "@" / "+" ] [nick] 
+            
+            Description: "@" is used for secret channels, "*" for private
+            channels, and "=" for others (public channels).
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_ENDOFNAMES</b></td><td width="50%">
+            IRC: [channel] :End of NAMES list
+            
+            Description: To reply to a NAMES message, a reply pair consisting
+            of RPL_NAMREPLY and RPL_ENDOFNAMES is sent by the
+            server back to the client. If there is no channel
+            found as in the query, then only RPL_ENDOFNAMES is
+            returned. The exception to this is when a NAMES
+            message is sent with no parameters and all visible
+            channels and contents are sent back in a series of
+            RPL_NAMEREPLY messages with a RPL_ENDOFNAMES to mark
+            the end.
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_LINKS</b></td><td width="50%">
+            IRC: [mask] [server] :[hopcount] [server info]
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_ENDOFLINKS</b></td><td width="50%">
+            IRC: [mask] :End of LINKS list
+            
+            Description: In replying to the LINKS message, a server MUST send
+            replies back using the RPL_LINKS numeric and mark the
+            end of the list using an RPL_ENDOFLINKS reply.
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_BANLIST</b></td><td width="50%">
+            IRC: [channel] [banmask]
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_ENDOFBANLIST</b></td><td width="50%">
+            IRC: [channel] :End of channel ban list
+            
+            Description: When listing the active 'bans' for a given channel,
+            a server is required to send the list back using the
+            RPL_BANLIST and RPL_ENDOFBANLIST messages. A separate
+            RPL_BANLIST is sent for each active banmask. After the
+            banmasks have been listed (or if none present) a
+            RPL_ENDOFBANLIST MUST be sent.
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_INFO</b></td><td width="50%">
+            IRC: :[string]
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_ENDOFINFO</b></td><td width="50%">
+            IRC: :End of INFO list
+            
+            Description: A server responding to an INFO message is required to
+            send all its 'info' in a series of RPL_INFO messages
+            with a RPL_ENDOFINFO reply to indicate the end of the
+            replies.
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_MOTDSTART</b></td><td width="50%">
+            IRC: :- [server] Message of the day - 
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_MOTD</b></td><td width="50%">
+            IRC: :- [text]
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_ENDOFMOTD</b></td><td width="50%">
+            IRC: :End of MOTD command
+            
+            Description: When responding to the MOTD message and the MOTD file
+            is found, the file is displayed line by line, with
+            each line no longer than 80 characters, using
+            RPL_MOTD format replies. These MUST be surrounded
+            by a RPL_MOTDSTART (before the RPL_MOTDs) and an
+            RPL_ENDOFMOTD (after).
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_YOUREOPER</b></td><td width="50%">
+            IRC: :You are now an IRC operator
+            
+            Description: RPL_YOUREOPER is sent back to a client which has
+            just successfully issued an OPER message and gained
+            operator status.
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_REHASHING</b></td><td width="50%">
+            IRC: [config file] :Rehashing
+            
+            Description: If the REHASH option is used and an operator sends
+            a REHASH message, an RPL_REHASHING is sent back to
+            the operator.
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_YOURESERVICE</b></td><td width="50%">
+            IRC: You are service [servicename]
+            
+            Description: Sent by the server to a service upon successful
+            registration.
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_TIME</b></td><td width="50%">
+            IRC: [server] :[string showing server's local time]
+            
+            Description: When replying to the TIME message, a server MUST send
+            the reply using the RPL_TIME format above. The string
+            showing the time need only contain the correct day and
+            time there. There is no further requirement for the
+            time string.
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_USERSSTART</b></td><td width="50%">
+            IRC: :UserID Terminal Host
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_USERS</b></td><td width="50%">
+            IRC: :[username] [ttyline] [hostname]
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_ENDOFUSERS</b></td><td width="50%">
+            IRC: :End of users
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_NOUSERS</b></td><td width="50%">
+            IRC: :Nobody logged in
+            
+            Description: If the USERS message is handled by a server, the
+            replies RPL_USERSTART, RPL_USERS, RPL_ENDOFUSERS and
+            RPL_NOUSERS are used. RPL_USERSSTART MUST be sent
+            first, following by either a sequence of RPL_USERS
+            or a single RPL_NOUSER. Following this is
+            RPL_ENDOFUSERS.
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_TRACELINK</b></td><td width="50%">
+            IRC: Link [version and debug level] [destination [next server] V[protocol version [link uptime in seconds] [backstream sendq [upstream sendq]
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_TRACECONNECTING</b></td><td width="50%">
+            IRC: Try. [class] [server]
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_TRACEHANDSHAKE</b></td><td width="50%">
+            IRC: H.S. [class] [server]
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_TRACEUNKNOWN</b></td><td width="50%">
+            IRC: ???? [class] [[client IP address in dot form]]
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_TRACEOPERATOR</b></td><td width="50%">
+            IRC: Oper [class] [nick]
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_TRACEUSER</b></td><td width="50%">
+            IRC: User [class] [nick]
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_TRACESERVER</b></td><td width="50%">
+            IRC: Serv [class] [int]S [int]C [server [nick!user|*!*]@[host|server] V[protocol version]
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_TRACESERVICE</b></td><td width="50%">
+            IRC: Service [class] [name] [type] [active type]
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_TRACENEWTYPE</b></td><td width="50%">
+            IRC: [newtype] 0 [client name]
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_TRACECLASS</b></td><td width="50%">
+            IRC: Class [class] [count]
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_TRACERECONNECT</b></td><td width="50%">
+            IRC: Class [class] [count] Unused
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_TRACELOG</b></td><td width="50%">
+            IRC: File [logfile] [debug level]
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_TRACEEND</b></td><td width="50%">
+            IRC: [server name] [version and debug level] :End of TRACE
+            
+            Description: The RPL_TRACE are all returned by the server in
+            response to the TRACE message. How many are
+            returned is dependent on the TRACE message and
+            whether it was sent by an operator or not. There
+            is no predefined order for which occurs first.
+            Replies RPL_TRACEUNKNOWN, RPL_TRACECONNECTING and
+            RPL_TRACEHANDSHAKE are all used for connections
+            which have not been fully established and are either
+            unknown, still attempting to connect or in the
+            process of completing the 'server handshake'.
+            RPL_TRACELINK is sent by any server which handles
+            a TRACE message and has to pass it on to another
+            server. The list of RPL_TRACELINKs sent in
+            response to a TRACE command traversing the IRC
+            network should reflect the actual connectivity of
+            the servers themselves along that path.
+            RPL_TRACENEWTYPE is to be used for any connection
+            which does not fit in the other categories but is
+            being displayed anyway.
+            RPL_TRACEEND is sent to indicate the end of the list.
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_STATSLINKINFO</b></td><td width="50%">
+            IRC: [linkname] [sendq] [sent messages [sent Kbytes] [received messages [received Kbytes] [time open]
+            
+            Description: reports statistics on a connection. [linkname]
+            identifies the particular connection, [sendq] is
+            the amount of data that is queued and waiting to be
+            sent [sent messages] the number of messages sent,
+            and [sent Kbytes] the amount of data sent, in
+            Kbytes. [received messages] and [received Kbytes]
+            are the equivalent of [sent messages] and [sent
+            Kbytes] for received data, respectively. [time
+            open] indicates how long ago the connection was
+            opened, in seconds.
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_STATSCOMMANDS</b></td><td width="50%">
+            IRC: [command] [count] [byte count] [remote count]
+            
+            Description: reports statistics on commands usage.
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_ENDOFSTATS</b></td><td width="50%">
+            IRC: [stats letter] :End of STATS report
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_STATSUPTIME</b></td><td width="50%">
+            IRC: :Server Up %d days %d:%02d:%02d
+            
+            Description: reports the server uptime.
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_STATSOLINE</b></td><td width="50%">
+            IRC: O [hostmask] * [name]
+            
+            Description: reports the allowed hosts from where user may become IRC
+            operators.
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_UMODEIS</b></td><td width="50%">
+            IRC: [user mode string]
+            
+            Description: To answer a query about a client's own mode,
+            RPL_UMODEIS is sent back.
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_SERVLIST</b></td><td width="50%">
+            IRC: [name] [server] [mask] [type] [hopcount] [info]
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_SERVLISTEND</b></td><td width="50%">
+            IRC: [mask] [type] :End of service listing
+            
+            Description: When listing services in reply to a SERVLIST message,
+            a server is required to send the list back using the
+            RPL_SERVLIST and RPL_SERVLISTEND messages. A separate
+            RPL_SERVLIST is sent for each service. After the
+            services have been listed (or if none present) a
+            RPL_SERVLISTEND MUST be sent.
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_LUSERCLIENT</b></td><td width="50%">
+            IRC: :There are [integer] users and [integer services on [integer] servers
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_LUSEROP</b></td><td width="50%">
+            IRC: [integer] :operator(s) online
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_LUSERUNKNOWN</b></td><td width="50%">
+            IRC: [integer] :unknown connection(s)
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_LUSERCHANNELS</b></td><td width="50%">
+            IRC: [integer] :channels formed
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_LUSERME</b></td><td width="50%">
+            IRC: :I have [integer] clients and [integer servers
+            
+            Description: In processing an LUSERS message, the server
+            sends a set of replies from RPL_LUSERCLIENT,
+            RPL_LUSEROP, RPL_USERUNKNOWN,
+            RPL_LUSERCHANNELS and RPL_LUSERME. When
+            replying, a server MUST send back
+            and RPL_LUSERME. The other
+            replies are only sent back if a non-zero count
+            is found for them.
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_ADMINME</b></td><td width="50%">
+            IRC: [server] :Administrative info
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_ADMINLOC1</b></td><td width="50%">
+            IRC: :[admin info]
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_ADMINLOC2</b></td><td width="50%">
+            IRC: :[admin info]
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_ADMINEMAIL</b></td><td width="50%">
+            IRC: :[admin info]
+            
+            Description: When replying to an ADMIN message, a server
+            is expected to use replies RPL_ADMINME
+            through to RPL_ADMINEMAIL and provide a text
+            message with each. For RPL_ADMINLOC1 a
+            description of what city, state and country
+            the server is in is expected, followed by
+            details of the institution (RPL_ADMINLOC2)
+            and constly the administrative contact for the
+            server (an email address here is REQUIRED)
+            in RPL_ADMINEMAIL.
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>RPL_TRYAGAIN</b></td><td width="50%">
+            IRC: [command] :Please wait a while and try again.
+            
+            Description: When a server drops a command without processing it,
+            it MUST use the reply RPL_TRYAGAIN to inform the
+            originating client.
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>ERR_NOSUCHNICK</b></td><td width="50%">
+            IRC: [nickname] :No such nick/channel
+            
+            Description: Used to indicate the nickname parameter supplied to a
+            command is currently unused.
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>ERR_NOSUCHSERVER</b></td><td width="50%">
+            IRC: [server name] :No such server
+            
+            Description: Used to indicate the server name given currently
+            does not exist.
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>ERR_NOSUCHCHANNEL</b></td><td width="50%">
+            IRC: [channel name] :No such channel
+            
+            Description: Used to indicate the given channel name is invalid.
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>ERR_CANNOTSENDTOCHAN</b></td><td width="50%">
+            IRC: [channel name] :Cannot send to channel
+            
+            Description: Sent to a user who is either (a) not on a channel
+            which is mode +n or (b) not a chanop (or mode +v) on
+            a channel which has mode +m set or where the user is
+            banned and is trying to send a PRIVMSG message to
+            that channel.
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>ERR_TOOMANYCHANNELS</b></td><td width="50%">
+            IRC: [channel name] :You have joined too many channels
+            
+            Description: Sent to a user when they have joined the maximum
+            number of allowed channels and they try to join
+            another channel.
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>ERR_WASNOSUCHNICK</b></td><td width="50%">
+            IRC: [nickname] :There was no such nickname
+            
+            Description: Returned by WHOWAS to indicate there is no history
+            information for that nickname.
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>ERR_TOOMANYTARGETS</b></td><td width="50%">
+            IRC: [target] :[error code] recipients. [abort message]
+            
+            Description: Returned to a client which is attempting to send a
+            PRIVMSG/NOTICE using the user@host destination format
+            and for a user@host which has several occurrences.
+            Returned to a client which trying to send a
+            PRIVMSG/NOTICE to too many recipients.
+            Returned to a client which is attempting to JOIN a safe
+            channel using the shortname when there are more than one
+            such channel.
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>ERR_NOSUCHSERVICE</b></td><td width="50%">
+            IRC: [service name] :No such service
+            
+            Description: Returned to a client which is attempting to send a SQUERY
+            to a service which does not exist.
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>ERR_NOORIGIN</b></td><td width="50%">
+            IRC: :No origin specified
+            
+            Description: PING or PONG message missing the originator parameter.
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>ERR_NORECIPIENT</b></td><td width="50%">
+            IRC: :No recipient given ([command])
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>ERR_NOTEXTTOSEND</b></td><td width="50%">
+            IRC: :No text to send
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>ERR_NOTOPLEVEL</b></td><td width="50%">
+            IRC: [mask] :No toplevel domain specified
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>ERR_WILDTOPLEVEL</b></td><td width="50%">
+            IRC: [mask] :Wildcard in toplevel domain
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>ERR_BADMASK</b></td><td width="50%">
+            IRC: PRIVMSG $[server]" or "PRIVMSG #[host]" is attempted
+            
+            Description: 412 - 415 are returned by PRIVMSG to indicate that
+            the message wasn't delivered for some reason.
+            ERR_NOTOPLEVEL and ERR_WILDTOPLEVEL are errors that
+            are returned when an invalid use of
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>ERR_TOOMANYLINES</b></td><td width="50%">
+            A query returned too many results.
+            This is not an offical part of the RFC but added since it seems to be in use.
+            </td></tr>
+<tr valign="top"><td width="50%"><b>ERR_UNKNOWNCOMMAND</b></td><td width="50%">
+            IRC: [command] :Unknown command
+            
+            Description: Returned to a registered client to indicate that the
+            command sent is unknown by the server.
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>ERR_NOMOTD</b></td><td width="50%">
+            IRC: :MOTD File is missing
+            
+            Description: Server's MOTD file could not be opened by the server.
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>ERR_NOADMININFO</b></td><td width="50%">
+            IRC: [server] :No administrative info available
+            
+            Description: Returned by a server in response to an ADMIN message
+            when there is an error in finding the appropriate
+            information.
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>ERR_FILEERROR</b></td><td width="50%">
+            IRC: :File error doing [file op] on [file]
+            
+            Description: Generic error message used to report a failed file
+            operation during the processing of a message.
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>ERR_NONICKNAMEGIVEN</b></td><td width="50%">
+            IRC: :No nickname given
+            
+            Description: Returned when a nickname parameter expected for a
+            command and isn't found.
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>ERR_ERRONEUSNICKNAME</b></td><td width="50%">
+            IRC: [nick] :Erroneous nickname
+            
+            Description: Returned after receiving a NICK message which contains
+            characters which do not fall in the defined set. See
+            section 2.3.1 for details on valid nicknames.
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>ERR_NICKNAMEINUSE</b></td><td width="50%">
+            IRC: [nick] :Nickname is already in use
+            
+            Description: Returned when a NICK message is processed that results
+            in an attempt to change to a currently existing
+            nickname.
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>ERR_NICKCOLLISION</b></td><td width="50%">
+            IRC: [nick] :Nickname collision KILL from [user]@[host]
+            
+            Description: Returned by a server to a client when it detects a
+            nickname collision (registered of a NICK that
+            already exists by another server).
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>ERR_UNAVAILRESOURCE</b></td><td width="50%">
+            IRC: [nick/channel] :Nick/channel is temporarily unavailable
+            
+            Description: Returned by a server to a user trying to join a channel
+            currently blocked by the channel delay mechanism.
+            Returned by a server to a user trying to change nickname
+            when the desired nickname is blocked by the nick delay
+            mechanism.
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>ERR_USERNOTINCHANNEL</b></td><td width="50%">
+            IRC: [nick] [channel] :They aren't on that channel
+            
+            Description: Returned by the server to indicate that the target
+            user of the command is not on the given channel.
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>ERR_NOTONCHANNEL</b></td><td width="50%">
+            IRC: [channel] :You're not on that channel
+            
+            Description: Returned by the server whenever a client tries to
+            perform a channel affecting command for which the
+            client isn't a member.
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>ERR_USERONCHANNEL</b></td><td width="50%">
+            IRC: [user] [channel] :is already on channel
+            
+            Description: Returned when a client tries to invite a user to a
+            channel they are already on.
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>ERR_NOLOGIN</b></td><td width="50%">
+            IRC: [user] :User not logged in
+            
+            Description: Returned by the summon after a SUMMON command for a
+            user was unable to be performed since they were not
+            logged in.
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>ERR_SUMMONDISABLED</b></td><td width="50%">
+            IRC: :SUMMON has been disabled
+            
+            Description: Returned as a response to the SUMMON command. MUST be
+            returned by any server which doesn't implement it.
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>ERR_USERSDISABLED</b></td><td width="50%">
+            IRC: :USERS has been disabled
+            
+            Description: Returned as a response to the USERS command. MUST be
+            returned by any server which does not implement it.
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>ERR_NOTREGISTERED</b></td><td width="50%">
+            IRC: :You have not registered
+            
+            Description: Returned by the server to indicate that the client
+            MUST be registered before the server will allow it
+            to be parsed in detail.
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>ERR_NEEDMOREPARAMS</b></td><td width="50%">
+            IRC: [command] :Not enough parameters
+            
+            Description: Returned by the server by numerous commands to
+            indicate to the client that it didn't supply enough
+            parameters.
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>ERR_ALREADYREGISTRED</b></td><td width="50%">
+            IRC: :Unauthorized command (already registered)
+            
+            Description: Returned by the server to any link which tries to
+            change part of the registered details (such as
+            password or user details from second USER message).
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>ERR_NOPERMFORHOST</b></td><td width="50%">
+            IRC: :Your host isn't among the privileged
+            
+            Description: Returned to a client which attempts to register with
+            a server which does not been setup to allow
+            connections from the host the attempted connection
+            is tried.
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>ERR_PASSWDMISMATCH</b></td><td width="50%">
+            IRC: :Password incorrect
+            
+            Description: Returned to indicate a failed attempt at registering
+            a connection for which a password was required and
+            was either not given or incorrect.
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>ERR_YOUREBANNEDCREEP</b></td><td width="50%">
+            IRC: :You are banned from this server
+            
+            Description: Returned after an attempt to connect and register
+            yourself with a server which has been setup to
+            explicitly deny connections to you.
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>ERR_YOUWILLBEBANNED</b></td><td width="50%">
+            IRC: :You are banned from this server
+            
+            Description: Sent by a server to a user to inform that access to the
+            server will soon be denied.
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>ERR_KEYSET</b></td><td width="50%">
+            IRC: [channel] :Channel key already set
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>ERR_CHANNELISFULL</b></td><td width="50%">
+            IRC: [channel] :Cannot join channel (+l)
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>ERR_UNKNOWNMODE</b></td><td width="50%">
+            IRC: [char] :is unknown mode char to me for [channel]
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>ERR_INVITEONLYCHAN</b></td><td width="50%">
+            IRC: [channel] :Cannot join channel (+i)
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>ERR_BANNEDFROMCHAN</b></td><td width="50%">
+            IRC: [channel] :Cannot join channel (+b)
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>ERR_BADCHANNELKEY</b></td><td width="50%">
+            IRC: [channel] :Cannot join channel (+k)
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>ERR_BADCHANMASK</b></td><td width="50%">
+            IRC: [channel] :Bad Channel Mask
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>ERR_NOCHANMODES</b></td><td width="50%">
+            IRC: [channel] :Channel doesn't support modes
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>ERR_BANLISTFULL</b></td><td width="50%">
+            IRC: [channel] [char] :Channel list is full
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>ERR_NOPRIVILEGES</b></td><td width="50%">
+            IRC: :Permission Denied- You're not an IRC operator
+            
+            Description: Any command requiring operator privileges to operate
+            MUST return this error to indicate the attempt was
+            unsuccessful.
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>ERR_CHANOPRIVSNEEDED</b></td><td width="50%">
+            IRC: [channel] :You're not channel operator
+            
+            Description: Any command requiring 'chanop' privileges (such as
+            MODE messages) MUST return this error if the client
+            making the attempt is not a chanop on the specified
+            channel.
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>ERR_CANTKILLSERVER</b></td><td width="50%">
+            IRC: :You can't kill a server!
+            
+            Description: Any attempts to use the KILL command on a server
+            are to be refused and this error returned directly
+            to the client.
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>ERR_RESTRICTED</b></td><td width="50%">
+            IRC: :Your connection is restricted!
+            
+            Description: Sent by the server to a user upon connection to indicate
+            the restricted nature of the connection (user mode "+r").
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>ERR_UNIQOPPRIVSNEEDED</b></td><td width="50%">
+            IRC: :You're not the original channel operator
+            
+            Description: Any MODE requiring "channel creator" privileges MUST
+            return this error if the client making the attempt is not
+            a chanop on the specified channel.
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>ERR_NOOPERHOST</b></td><td width="50%">
+            IRC: :No O-lines for your host
+            
+            Description: If a client sends an OPER message and the server has
+            not been configured to allow connections from the
+            client's host as an operator, this error MUST be
+            returned.
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>ERR_UMODEUNKNOWNFLAG</b></td><td width="50%">
+            IRC: :Unknown MODE flag
+            
+            Description: Returned by the server to indicate that a MODE
+            message was sent with a nickname parameter and that
+            the a mode flag sent was not recognized.
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>ERR_USERSDONTMATCH</b></td><td width="50%">
+            IRC: :Cannot change mode for other users
+            
+            Description: Error sent to any user trying to view or change the
+            user mode for a user other than themselves.
+            
+            </td></tr>
+<tr valign="top"><td width="50%"><b>ConnectionFailed</b></td><td width="50%">
+            When the TCP/IP connection unexpectedly fails.
+            </td></tr>
+<tr valign="top"><td width="50%"><b>IrcServerError</b></td><td width="50%">
+            The IRC server sent an 'ERROR' message for some
+            reason.
+            </td></tr>
+<tr valign="top"><td width="50%"><b>BadDccEndpoint</b></td><td width="50%">
+            When the socket connection information sent
+            by the remote user in a DCC request is bad.
+            </td></tr>
+<tr valign="top"><td width="50%"><b>UnparseableMessage</b></td><td width="50%">
+            A message from the IRC server that cannot be parsed. This may be because
+            the message is intended to cause problems, it may be an unsupported protocol
+            such as DCC Voice, or it may be that the Thresher parser simply cannot understand
+            it.
+            </td></tr>
+<tr valign="top"><td width="50%"><b>UnableToResume</b></td><td width="50%">
+            Normally a DCC Resume message is sent in response to
+            a DCC Send. This error is signaled when a DCC Resume message is
+            received without a previous Send or the Send session has timed out.
+            </td></tr>
+<tr valign="top"><td width="50%"><b>UnknownEncryptionProtocol</b></td><td width="50%">
+            Signaled when a DCC Get or SEND contains an encryption
+            protocol that Thresher does not support.
+            </td></tr>
+<tr valign="top"><td width="50%"><b>BadDccAcceptValue</b></td><td width="50%">
+            When trying to resume a DCC transfer the remote user is
+            supposed to send an Accept message with the same starting position
+            in the file. If these numbers differ this error is raised.
+            </td></tr>
+<tr valign="top"><td width="50%"><b>BadResumePosition</b></td><td width="50%">
+            If the remote user sends a DCC resume request which
+            asks for a start position greater than or equals to the file
+            size then this error is raised.
+            </td></tr>
+<tr valign="top"><td width="50%"><b>DccConnectionRefused</b></td><td width="50%">
+            When attempting to connect to another
+            machine using DCC and the target machine
+            refuses the connection this error is raised.
+            </td></tr></table></div><h4 class="dtH4">Requirements</h4><p><b>Namespace: </b><a href="Sharkbite.Irc.html">Sharkbite.Irc</a></p><p><b>Assembly: </b>Sharkbite.Thresher (in Sharkbite.Thresher.dll)
+					</p><h4 class="dtH4">See Also</h4><p><a href="Sharkbite.Irc.html">Sharkbite.Irc Namespace</a></p><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e" viewastext="true" style="display: none;"><param name="Keyword" value="ReplyCode enumeration"><param name="Keyword" value="Sharkbite.Irc.ReplyCode enumeration"><param name="Keyword" value="RPL_WELCOME enumeration member"><param name="Keyword" value="ReplyCode.RPL_WELCOME enumeration member"><param name="Keyword" value="RPL_YOURHOST enumeration member"><param name="Keyword" value="ReplyCode.RPL_YOURHOST enumeration member"><param name="Keyword" value="RPL_CREATED enumeration member"><param name="Keyword" value="ReplyCode.RPL_CREATED enumeration member"><param name="Keyword" value="RPL_MYINFO enumeration member"><param name="Keyword" value="ReplyCode.RPL_MYINFO enumeration member"><param name="Keyword" value="RPL_BOUNCE enumeration member"><param name="Keyword" value="ReplyCode.RPL_BOUNCE enumeration member"><param name="Keyword" value="RPL_USERHOST enumeration member"><param name="Keyword" value="ReplyCode.RPL_USERHOST enumeration member"><param name="Keyword" value="RPL_ISON enumeration member"><param name="Keyword" value="ReplyCode.RPL_ISON enumeration member"><param name="Keyword" value="RPL_AWAY enumeration member"><param name="Keyword" value="ReplyCode.RPL_AWAY enumeration member"><param name="Keyword" value="RPL_UNAWAY enumeration member"><param name="Keyword" value="ReplyCode.RPL_UNAWAY enumeration member"><param name="Keyword" value="RPL_NOWAWAY enumeration member"><param name="Keyword" value="ReplyCode.RPL_NOWAWAY enumeration member"><param name="Keyword" value="RPL_WHOISUSER enumeration member"><param name="Keyword" value="ReplyCode.RPL_WHOISUSER enumeration member"><param name="Keyword" value="RPL_WHOISSERVER enumeration member"><param name="Keyword" value="ReplyCode.RPL_WHOISSERVER enumeration member"><param name="Keyword" value="RPL_WHOISOPERATOR enumeration member"><param name="Keyword" value="ReplyCode.RPL_WHOISOPERATOR enumeration member"><param name="Keyword" value="RPL_WHOISIDLE enumeration member"><param name="Keyword" value="ReplyCode.RPL_WHOISIDLE enumeration member"><param name="Keyword" value="RPL_ENDOFWHOIS enumeration member"><param name="Keyword" value="ReplyCode.RPL_ENDOFWHOIS enumeration member"><param name="Keyword" value="RPL_WHOISCHANNELS enumeration member"><param name="Keyword" value="ReplyCode.RPL_WHOISCHANNELS enumeration member"><param name="Keyword" value="RPL_WHOWASUSER enumeration member"><param name="Keyword" value="ReplyCode.RPL_WHOWASUSER enumeration member"><param name="Keyword" value="RPL_ENDOFWHOWAS enumeration member"><param name="Keyword" value="ReplyCode.RPL_ENDOFWHOWAS enumeration member"><param name="Keyword" value="RPL_LISTSTART enumeration member"><param name="Keyword" value="ReplyCode.RPL_LISTSTART enumeration member"><param name="Keyword" value="RPL_LIST enumeration member"><param name="Keyword" value="ReplyCode.RPL_LIST enumeration member"><param name="Keyword" value="RPL_LISTEND enumeration member"><param name="Keyword" value="ReplyCode.RPL_LISTEND enumeration member"><param name="Keyword" value="RPL_UNIQOPIS enumeration member"><param name="Keyword" value="ReplyCode.RPL_UNIQOPIS enumeration member"><param name="Keyword" value="RPL_CHANNELMODEIS enumeration member"><param name="Keyword" value="ReplyCode.RPL_CHANNELMODEIS enumeration member"><param name="Keyword" value="RPL_NOTOPIC enumeration member"><param name="Keyword" value="ReplyCode.RPL_NOTOPIC enumeration member"><param name="Keyword" value="RPL_TOPIC enumeration member"><param name="Keyword" value="ReplyCode.RPL_TOPIC enumeration member"><param name="Keyword" value="RPL_INVITING enumeration member"><param name="Keyword" value="ReplyCode.RPL_INVITING enumeration member"><param name="Keyword" value="RPL_SUMMONING enumeration member"><param name="Keyword" value="ReplyCode.RPL_SUMMONING enumeration member"><param name="Keyword" value="RPL_INVITELIST enumeration member"><param name="Keyword" value="ReplyCode.RPL_INVITELIST enumeration member"><param name="Keyword" value="RPL_ENDOFINVITELIST enumeration member"><param name="Keyword" value="ReplyCode.RPL_ENDOFINVITELIST enumeration member"><param name="Keyword" value="RPL_EXCEPTLIST enumeration member"><param name="Keyword" value="ReplyCode.RPL_EXCEPTLIST enumeration member"><param name="Keyword" value="RPL_ENDOFEXCEPTLIST enumeration member"><param name="Keyword" value="ReplyCode.RPL_ENDOFEXCEPTLIST enumeration member"><param name="Keyword" value="RPL_VERSION enumeration member"><param name="Keyword" value="ReplyCode.RPL_VERSION enumeration member"><param name="Keyword" value="RPL_WHOREPLY enumeration member"><param name="Keyword" value="ReplyCode.RPL_WHOREPLY enumeration member"><param name="Keyword" value="RPL_ENDOFWHO enumeration member"><param name="Keyword" value="ReplyCode.RPL_ENDOFWHO enumeration member"><param name="Keyword" value="RPL_NAMREPLY enumeration member"><param name="Keyword" value="ReplyCode.RPL_NAMREPLY enumeration member"><param name="Keyword" value="RPL_ENDOFNAMES enumeration member"><param name="Keyword" value="ReplyCode.RPL_ENDOFNAMES enumeration member"><param name="Keyword" value="RPL_LINKS enumeration member"><param name="Keyword" value="ReplyCode.RPL_LINKS enumeration member"><param name="Keyword" value="RPL_ENDOFLINKS enumeration member"><param name="Keyword" value="ReplyCode.RPL_ENDOFLINKS enumeration member"><param name="Keyword" value="RPL_BANLIST enumeration member"><param name="Keyword" value="ReplyCode.RPL_BANLIST enumeration member"><param name="Keyword" value="RPL_ENDOFBANLIST enumeration member"><param name="Keyword" value="ReplyCode.RPL_ENDOFBANLIST enumeration member"><param name="Keyword" value="RPL_INFO enumeration member"><param name="Keyword" value="ReplyCode.RPL_INFO enumeration member"><param name="Keyword" value="RPL_ENDOFINFO enumeration member"><param name="Keyword" value="ReplyCode.RPL_ENDOFINFO enumeration member"><param name="Keyword" value="RPL_MOTDSTART enumeration member"><param name="Keyword" value="ReplyCode.RPL_MOTDSTART enumeration member"><param name="Keyword" value="RPL_MOTD enumeration member"><param name="Keyword" value="ReplyCode.RPL_MOTD enumeration member"><param name="Keyword" value="RPL_ENDOFMOTD enumeration member"><param name="Keyword" value="ReplyCode.RPL_ENDOFMOTD enumeration member"><param name="Keyword" value="RPL_YOUREOPER enumeration member"><param name="Keyword" value="ReplyCode.RPL_YOUREOPER enumeration member"><param name="Keyword" value="RPL_REHASHING enumeration member"><param name="Keyword" value="ReplyCode.RPL_REHASHING enumeration member"><param name="Keyword" value="RPL_YOURESERVICE enumeration member"><param name="Keyword" value="ReplyCode.RPL_YOURESERVICE enumeration member"><param name="Keyword" value="RPL_TIME enumeration member"><param name="Keyword" value="ReplyCode.RPL_TIME enumeration member"><param name="Keyword" value="RPL_USERSSTART enumeration member"><param name="Keyword" value="ReplyCode.RPL_USERSSTART enumeration member"><param name="Keyword" value="RPL_USERS enumeration member"><param name="Keyword" value="ReplyCode.RPL_USERS enumeration member"><param name="Keyword" value="RPL_ENDOFUSERS enumeration member"><param name="Keyword" value="ReplyCode.RPL_ENDOFUSERS enumeration member"><param name="Keyword" value="RPL_NOUSERS enumeration member"><param name="Keyword" value="ReplyCode.RPL_NOUSERS enumeration member"><param name="Keyword" value="RPL_TRACELINK enumeration member"><param name="Keyword" value="ReplyCode.RPL_TRACELINK enumeration member"><param name="Keyword" value="RPL_TRACECONNECTING enumeration member"><param name="Keyword" value="ReplyCode.RPL_TRACECONNECTING enumeration member"><param name="Keyword" value="RPL_TRACEHANDSHAKE enumeration member"><param name="Keyword" value="ReplyCode.RPL_TRACEHANDSHAKE enumeration member"><param name="Keyword" value="RPL_TRACEUNKNOWN enumeration member"><param name="Keyword" value="ReplyCode.RPL_TRACEUNKNOWN enumeration member"><param name="Keyword" value="RPL_TRACEOPERATOR enumeration member"><param name="Keyword" value="ReplyCode.RPL_TRACEOPERATOR enumeration member"><param name="Keyword" value="RPL_TRACEUSER enumeration member"><param name="Keyword" value="ReplyCode.RPL_TRACEUSER enumeration member"><param name="Keyword" value="RPL_TRACESERVER enumeration member"><param name="Keyword" value="ReplyCode.RPL_TRACESERVER enumeration member"><param name="Keyword" value="RPL_TRACESERVICE enumeration member"><param name="Keyword" value="ReplyCode.RPL_TRACESERVICE enumeration member"><param name="Keyword" value="RPL_TRACENEWTYPE enumeration member"><param name="Keyword" value="ReplyCode.RPL_TRACENEWTYPE enumeration member"><param name="Keyword" value="RPL_TRACECLASS enumeration member"><param name="Keyword" value="ReplyCode.RPL_TRACECLASS enumeration member"><param name="Keyword" value="RPL_TRACERECONNECT enumeration member"><param name="Keyword" value="ReplyCode.RPL_TRACERECONNECT enumeration member"><param name="Keyword" value="RPL_TRACELOG enumeration member"><param name="Keyword" value="ReplyCode.RPL_TRACELOG enumeration member"><param name="Keyword" value="RPL_TRACEEND enumeration member"><param name="Keyword" value="ReplyCode.RPL_TRACEEND enumeration member"><param name="Keyword" value="RPL_STATSLINKINFO enumeration member"><param name="Keyword" value="ReplyCode.RPL_STATSLINKINFO enumeration member"><param name="Keyword" value="RPL_STATSCOMMANDS enumeration member"><param name="Keyword" value="ReplyCode.RPL_STATSCOMMANDS enumeration member"><param name="Keyword" value="RPL_ENDOFSTATS enumeration member"><param name="Keyword" value="ReplyCode.RPL_ENDOFSTATS enumeration member"><param name="Keyword" value="RPL_STATSUPTIME enumeration member"><param name="Keyword" value="ReplyCode.RPL_STATSUPTIME enumeration member"><param name="Keyword" value="RPL_STATSOLINE enumeration member"><param name="Keyword" value="ReplyCode.RPL_STATSOLINE enumeration member"><param name="Keyword" value="RPL_UMODEIS enumeration member"><param name="Keyword" value="ReplyCode.RPL_UMODEIS enumeration member"><param name="Keyword" value="RPL_SERVLIST enumeration member"><param name="Keyword" value="ReplyCode.RPL_SERVLIST enumeration member"><param name="Keyword" value="RPL_SERVLISTEND enumeration member"><param name="Keyword" value="ReplyCode.RPL_SERVLISTEND enumeration member"><param name="Keyword" value="RPL_LUSERCLIENT enumeration member"><param name="Keyword" value="ReplyCode.RPL_LUSERCLIENT enumeration member"><param name="Keyword" value="RPL_LUSEROP enumeration member"><param name="Keyword" value="ReplyCode.RPL_LUSEROP enumeration member"><param name="Keyword" value="RPL_LUSERUNKNOWN enumeration member"><param name="Keyword" value="ReplyCode.RPL_LUSERUNKNOWN enumeration member"><param name="Keyword" value="RPL_LUSERCHANNELS enumeration member"><param name="Keyword" value="ReplyCode.RPL_LUSERCHANNELS enumeration member"><param name="Keyword" value="RPL_LUSERME enumeration member"><param name="Keyword" value="ReplyCode.RPL_LUSERME enumeration member"><param name="Keyword" value="RPL_ADMINME enumeration member"><param name="Keyword" value="ReplyCode.RPL_ADMINME enumeration member"><param name="Keyword" value="RPL_ADMINLOC1 enumeration member"><param name="Keyword" value="ReplyCode.RPL_ADMINLOC1 enumeration member"><param name="Keyword" value="RPL_ADMINLOC2 enumeration member"><param name="Keyword" value="ReplyCode.RPL_ADMINLOC2 enumeration member"><param name="Keyword" value="RPL_ADMINEMAIL enumeration member"><param name="Keyword" value="ReplyCode.RPL_ADMINEMAIL enumeration member"><param name="Keyword" value="RPL_TRYAGAIN enumeration member"><param name="Keyword" value="ReplyCode.RPL_TRYAGAIN enumeration member"><param name="Keyword" value="ERR_NOSUCHNICK enumeration member"><param name="Keyword" value="ReplyCode.ERR_NOSUCHNICK enumeration member"><param name="Keyword" value="ERR_NOSUCHSERVER enumeration member"><param name="Keyword" value="ReplyCode.ERR_NOSUCHSERVER enumeration member"><param name="Keyword" value="ERR_NOSUCHCHANNEL enumeration member"><param name="Keyword" value="ReplyCode.ERR_NOSUCHCHANNEL enumeration member"><param name="Keyword" value="ERR_CANNOTSENDTOCHAN enumeration member"><param name="Keyword" value="ReplyCode.ERR_CANNOTSENDTOCHAN enumeration member"><param name="Keyword" value="ERR_TOOMANYCHANNELS enumeration member"><param name="Keyword" value="ReplyCode.ERR_TOOMANYCHANNELS enumeration member"><param name="Keyword" value="ERR_WASNOSUCHNICK enumeration member"><param name="Keyword" value="ReplyCode.ERR_WASNOSUCHNICK enumeration member"><param name="Keyword" value="ERR_TOOMANYTARGETS enumeration member"><param name="Keyword" value="ReplyCode.ERR_TOOMANYTARGETS enumeration member"><param name="Keyword" value="ERR_NOSUCHSERVICE enumeration member"><param name="Keyword" value="ReplyCode.ERR_NOSUCHSERVICE enumeration member"><param name="Keyword" value="ERR_NOORIGIN enumeration member"><param name="Keyword" value="ReplyCode.ERR_NOORIGIN enumeration member"><param name="Keyword" value="ERR_NORECIPIENT enumeration member"><param name="Keyword" value="ReplyCode.ERR_NORECIPIENT enumeration member"><param name="Keyword" value="ERR_NOTEXTTOSEND enumeration member"><param name="Keyword" value="ReplyCode.ERR_NOTEXTTOSEND enumeration member"><param name="Keyword" value="ERR_NOTOPLEVEL enumeration member"><param name="Keyword" value="ReplyCode.ERR_NOTOPLEVEL enumeration member"><param name="Keyword" value="ERR_WILDTOPLEVEL enumeration member"><param name="Keyword" value="ReplyCode.ERR_WILDTOPLEVEL enumeration member"><param name="Keyword" value="ERR_BADMASK enumeration member"><param name="Keyword" value="ReplyCode.ERR_BADMASK enumeration member"><param name="Keyword" value="ERR_TOOMANYLINES enumeration member"><param name="Keyword" value="ReplyCode.ERR_TOOMANYLINES enumeration member"><param name="Keyword" value="ERR_UNKNOWNCOMMAND enumeration member"><param name="Keyword" value="ReplyCode.ERR_UNKNOWNCOMMAND enumeration member"><param name="Keyword" value="ERR_NOMOTD enumeration member"><param name="Keyword" value="ReplyCode.ERR_NOMOTD enumeration member"><param name="Keyword" value="ERR_NOADMININFO enumeration member"><param name="Keyword" value="ReplyCode.ERR_NOADMININFO enumeration member"><param name="Keyword" value="ERR_FILEERROR enumeration member"><param name="Keyword" value="ReplyCode.ERR_FILEERROR enumeration member"><param name="Keyword" value="ERR_NONICKNAMEGIVEN enumeration member"><param name="Keyword" value="ReplyCode.ERR_NONICKNAMEGIVEN enumeration member"><param name="Keyword" value="ERR_ERRONEUSNICKNAME enumeration member"><param name="Keyword" value="ReplyCode.ERR_ERRONEUSNICKNAME enumeration member"><param name="Keyword" value="ERR_NICKNAMEINUSE enumeration member"><param name="Keyword" value="ReplyCode.ERR_NICKNAMEINUSE enumeration member"><param name="Keyword" value="ERR_NICKCOLLISION enumeration member"><param name="Keyword" value="ReplyCode.ERR_NICKCOLLISION enumeration member"><param name="Keyword" value="ERR_UNAVAILRESOURCE enumeration member"><param name="Keyword" value="ReplyCode.ERR_UNAVAILRESOURCE enumeration member"><param name="Keyword" value="ERR_USERNOTINCHANNEL enumeration member"><param name="Keyword" value="ReplyCode.ERR_USERNOTINCHANNEL enumeration member"><param name="Keyword" value="ERR_NOTONCHANNEL enumeration member"><param name="Keyword" value="ReplyCode.ERR_NOTONCHANNEL enumeration member"><param name="Keyword" value="ERR_USERONCHANNEL enumeration member"><param name="Keyword" value="ReplyCode.ERR_USERONCHANNEL enumeration member"><param name="Keyword" value="ERR_NOLOGIN enumeration member"><param name="Keyword" value="ReplyCode.ERR_NOLOGIN enumeration member"><param name="Keyword" value="ERR_SUMMONDISABLED enumeration member"><param name="Keyword" value="ReplyCode.ERR_SUMMONDISABLED enumeration member"><param name="Keyword" value="ERR_USERSDISABLED enumeration member"><param name="Keyword" value="ReplyCode.ERR_USERSDISABLED enumeration member"><param name="Keyword" value="ERR_NOTREGISTERED enumeration member"><param name="Keyword" value="ReplyCode.ERR_NOTREGISTERED enumeration member"><param name="Keyword" value="ERR_NEEDMOREPARAMS enumeration member"><param name="Keyword" value="ReplyCode.ERR_NEEDMOREPARAMS enumeration member"><param name="Keyword" value="ERR_ALREADYREGISTRED enumeration member"><param name="Keyword" value="ReplyCode.ERR_ALREADYREGISTRED enumeration member"><param name="Keyword" value="ERR_NOPERMFORHOST enumeration member"><param name="Keyword" value="ReplyCode.ERR_NOPERMFORHOST enumeration member"><param name="Keyword" value="ERR_PASSWDMISMATCH enumeration member"><param name="Keyword" value="ReplyCode.ERR_PASSWDMISMATCH enumeration member"><param name="Keyword" value="ERR_YOUREBANNEDCREEP enumeration member"><param name="Keyword" value="ReplyCode.ERR_YOUREBANNEDCREEP enumeration member"><param name="Keyword" value="ERR_YOUWILLBEBANNED enumeration member"><param name="Keyword" value="ReplyCode.ERR_YOUWILLBEBANNED enumeration member"><param name="Keyword" value="ERR_KEYSET enumeration member"><param name="Keyword" value="ReplyCode.ERR_KEYSET enumeration member"><param name="Keyword" value="ERR_CHANNELISFULL enumeration member"><param name="Keyword" value="ReplyCode.ERR_CHANNELISFULL enumeration member"><param name="Keyword" value="ERR_UNKNOWNMODE enumeration member"><param name="Keyword" value="ReplyCode.ERR_UNKNOWNMODE enumeration member"><param name="Keyword" value="ERR_INVITEONLYCHAN enumeration member"><param name="Keyword" value="ReplyCode.ERR_INVITEONLYCHAN enumeration member"><param name="Keyword" value="ERR_BANNEDFROMCHAN enumeration member"><param name="Keyword" value="ReplyCode.ERR_BANNEDFROMCHAN enumeration member"><param name="Keyword" value="ERR_BADCHANNELKEY enumeration member"><param name="Keyword" value="ReplyCode.ERR_BADCHANNELKEY enumeration member"><param name="Keyword" value="ERR_BADCHANMASK enumeration member"><param name="Keyword" value="ReplyCode.ERR_BADCHANMASK enumeration member"><param name="Keyword" value="ERR_NOCHANMODES enumeration member"><param name="Keyword" value="ReplyCode.ERR_NOCHANMODES enumeration member"><param name="Keyword" value="ERR_BANLISTFULL enumeration member"><param name="Keyword" value="ReplyCode.ERR_BANLISTFULL enumeration member"><param name="Keyword" value="ERR_NOPRIVILEGES enumeration member"><param name="Keyword" value="ReplyCode.ERR_NOPRIVILEGES enumeration member"><param name="Keyword" value="ERR_CHANOPRIVSNEEDED enumeration member"><param name="Keyword" value="ReplyCode.ERR_CHANOPRIVSNEEDED enumeration member"><param name="Keyword" value="ERR_CANTKILLSERVER enumeration member"><param name="Keyword" value="ReplyCode.ERR_CANTKILLSERVER enumeration member"><param name="Keyword" value="ERR_RESTRICTED enumeration member"><param name="Keyword" value="ReplyCode.ERR_RESTRICTED enumeration member"><param name="Keyword" value="ERR_UNIQOPPRIVSNEEDED enumeration member"><param name="Keyword" value="ReplyCode.ERR_UNIQOPPRIVSNEEDED enumeration member"><param name="Keyword" value="ERR_NOOPERHOST enumeration member"><param name="Keyword" value="ReplyCode.ERR_NOOPERHOST enumeration member"><param name="Keyword" value="ERR_UMODEUNKNOWNFLAG enumeration member"><param name="Keyword" value="ReplyCode.ERR_UMODEUNKNOWNFLAG enumeration member"><param name="Keyword" value="ERR_USERSDONTMATCH enumeration member"><param name="Keyword" value="ReplyCode.ERR_USERSDONTMATCH enumeration member"><param name="Keyword" value="ConnectionFailed enumeration member"><param name="Keyword" value="ReplyCode.ConnectionFailed enumeration member"><param name="Keyword" value="IrcServerError enumeration member"><param name="Keyword" value="ReplyCode.IrcServerError enumeration member"><param name="Keyword" value="BadDccEndpoint enumeration member"><param name="Keyword" value="ReplyCode.BadDccEndpoint enumeration member"><param name="Keyword" value="UnparseableMessage enumeration member"><param name="Keyword" value="ReplyCode.UnparseableMessage enumeration member"><param name="Keyword" value="UnableToResume enumeration member"><param name="Keyword" value="ReplyCode.UnableToResume enumeration member"><param name="Keyword" value="UnknownEncryptionProtocol enumeration member"><param name="Keyword" value="ReplyCode.UnknownEncryptionProtocol enumeration member"><param name="Keyword" value="BadDccAcceptValue enumeration member"><param name="Keyword" value="ReplyCode.BadDccAcceptValue enumeration member"><param name="Keyword" value="BadResumePosition enumeration member"><param name="Keyword" value="ReplyCode.BadResumePosition enumeration member"><param name="Keyword" value="DccConnectionRefused enumeration member"><param name="Keyword" value="ReplyCode.DccConnectionRefused enumeration member"></object><hr><div id="footer"><p><a>Aaron Hunter</a></p><p>Generated from assembly Sharkbite.Thresher [1.2.0.0]</p></div></div></body></html>

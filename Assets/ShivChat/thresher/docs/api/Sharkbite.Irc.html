@@ -1,0 +1,226 @@
+﻿<html dir="LTR"><head><META http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5"><title>Sharkbite.Irc</title><xml></xml><link rel="stylesheet" type="text/css" href="MSDN.css"></head><body id="bodyID" class="dtBODY"><div id="nsbanner"><div id="bannerrow1"><table class="bannerparthead" cellspacing="0"><tr id="hdr"><td class="runninghead">Thresher 1.2 Class Documentation</td><td class="product"></td></tr></table></div><div id="TitleRow"><h1 class="dtH1">Sharkbite.Irc Namespace</h1></div></div><div id="nstext"><p></p><p><a href="Sharkbite.IrcHierarchy.html">Namespace hierarchy</a></p><h3 class="dtH3">Classes</h3><div class="tablediv"><table class="dtTABLE" cellspacing="0"><tr valign="top"><th width="50%">Class</th><th width="50%">Description</th></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.ChannelModeInfo.html">ChannelModeInfo</a></td><td width="50%">
+            A simple struct designed to hold al the attributes that 
+            are contain in a Channel mode. 
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.CommandBuilder.html">CommandBuilder</a></td><td width="50%">
+            CommandBuilder provides the support methods needed
+            by its subclasses to build correctly formatted messages for
+            the IRC server. It is never itself instantiated.
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.Connection.html">Connection</a></td><td width="50%">
+            This class manages the connection to the IRC server and provides
+            access to all the objects needed to send and receive messages.
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.CtcpListener.html">CtcpListener</a></td><td width="50%">
+             This class is used to send CTCP specific events. Once registered with this object 
+             the client can receive notification of all CTCP requests, pings, and replies. Instances 
+             of this class are not created directly but are retrieved as a property from a 
+             <a href="Sharkbite.Irc.Connection.html">Connection</a> object.
+             </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.CtcpResponder.html">CtcpResponder</a></td><td width="50%">
+            A class which automatically responds to CTCP queries. The
+            replies it sends are configurable by the client.
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.CtcpSender.html">CtcpSender</a></td><td width="50%">
+            This class allows the client to send CTCP commands. There is no limit
+            on what commands can actually be sent, however, the accepted CTCP 
+            commands are: UserInfo, Finger, Version, Source, ClientInfo, ErrMsg, and Time.
+            
+            <remarks>Action, though it is also a CTCP command, is so common that it is handled 
+            by the normal sender class. </remarks></td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.CtcpUtil.html">CtcpUtil</a></td><td width="50%">
+            Constants and utility methods to support CTCP.
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.DccChatSession.html">DccChatSession</a></td><td width="50%">
+            Establish a DCC Chat connection with a remote user. 
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.DccFileInfo.html">DccFileInfo</a></td><td width="50%">
+            Manages the information about the file being
+            transfered. 
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.DccFileSession.html">DccFileSession</a></td><td width="50%">
+            Allows the user to send and receive files
+            from other IRC users.
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.DccFileSessionManager.html">DccFileSessionManager</a></td><td width="50%">
+            This class checks each file session to see if it has not 
+            had any activity within the timeout period so that
+            inactive sessions can be closed.
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.DccListener.html">DccListener</a></td><td width="50%">
+            DccListener listens for incoming DCC requests on any Connection in which
+            DCC is enabled. This class follows the singleton pattern and there so there
+            is only a single instance which listens to all connections.
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.DccUserInfo.html">DccUserInfo</a></td><td width="50%">
+            This class encapsulates all the information known
+            about a remote user in the context of a DCC session.
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.DccUtil.html">DccUtil</a></td><td width="50%">
+            Utility methods needed to handle DCC requests.
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.Identd.html">Identd</a></td><td width="50%">
+            An Ident daemon is still used by some IRC networks for 
+            authentication. It is a simple service which when queried
+            by a remote system returns a username. The server is controlled via static
+            methods all of which are Thread safe.
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.Listener.html">Listener</a></td><td width="50%">
+            This class parses messages received from the IRC server and
+            raises the appropriate event. 
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.NameGenerator.html">NameGenerator</a></td><td width="50%">
+            Generates random, made-up names. The names appear to be language neutral (sort of).
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.Rfc2812Util.html">Rfc2812Util</a></td><td width="50%">
+            RFC 2812 Utility methods.
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.Sender.html">Sender</a></td><td width="50%">
+            This class is used to send all the IRC commands except for CTCP and DCC
+            messages. Instances of this class are retrieved as properties of the Connection
+            object. All methods in this class are thread safe.
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.ServerProperties.html">ServerProperties</a></td><td width="50%">
+            Encapsulates the collection of properties sent by the IRC server
+            after registration.
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.TextColor.html">TextColor</a></td><td width="50%">
+            This class conatins a set of methods for adding and removing mIRC color
+            and other control codes.
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.UserInfo.html">UserInfo</a></td><td width="50%">
+            A convenient holder of user information. Instances of this class
+            are created internally.
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.WhoisInfo.html">WhoisInfo</a></td><td width="50%">
+            The collection of information about a user 
+            returned by a Whois query. Instances of this class
+            are created internally.
+            </td></tr></table></div><h3 class="dtH3">Interfaces</h3><div class="tablediv"><table class="dtTABLE" cellspacing="0"><tr valign="top"><th width="50%">Interface</th><th width="50%">Description</th></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.IParser.html">IParser</a></td><td width="50%">
+            Classes should implement this Interface in order to act as custom
+            parsers for the raw messages received from IRC servers.
+            </td></tr></table></div><h3 class="dtH3">Structures</h3><div class="tablediv"><table class="dtTABLE" cellspacing="0"><tr valign="top"><th width="50%">Structure</th><th width="50%">Description</th></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.ConnectionArgs.html">ConnectionArgs</a></td><td width="50%">
+            A collection of parameters necessary to establish
+            an IRC connection.
+            </td></tr></table></div><h3 class="dtH3">Delegates</h3><div class="tablediv"><table class="dtTABLE" cellspacing="0"><tr valign="top"><th width="50%">Delegate</th><th width="50%">Description</th></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.ActionEventHandler.html">ActionEventHandler</a></td><td width="50%">
+            An action message was sent to a channel.
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.AdminEventHandler.html">AdminEventHandler</a></td><td width="50%">
+            The response to an <a href="Sharkbite.Irc.Sender.Admin_overload_1.html">Admin</a> request.
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.AwayEventHandler.html">AwayEventHandler</a></td><td width="50%">
+            A Notice or Private message was sent to someone
+            whose status is away.
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.ChannelListEventHandler.html">ChannelListEventHandler</a></td><td width="50%">
+            Response to a <a href="Sharkbite.Irc.Sender.RequestChannelList.html">RequestChannelList</a> command.
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.ChannelModeChangeEventHandler.html">ChannelModeChangeEventHandler</a></td><td width="50%">
+            A channel's mode has changed.
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.ChannelModeRequestEventHandler.html">ChannelModeRequestEventHandler</a></td><td width="50%">
+            The response to a <a href="Sharkbite.Irc.Sender.RequestChannelModes.html">RequestChannelModes</a> command.
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.ChatMessageReceivedEventHandler.html">ChatMessageReceivedEventHandler</a></td><td width="50%">
+            A DCC chat message was received from the remote user.
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.ChatRequestTimeoutEventHandler.html">ChatRequestTimeoutEventHandler</a></td><td width="50%">
+            When trying to initiate a DCC chat request the remote user
+            did not respond within the alotted time.
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.ChatSessionClosedEventHandler.html">ChatSessionClosedEventHandler</a></td><td width="50%">
+            A DCC chat session has been closed.
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.ChatSessionOpenedEventHandler.html">ChatSessionOpenedEventHandler</a></td><td width="50%">
+            A DCC chat session has been opened with a remote user.
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.CtcpPingReplyEventHandler.html">CtcpPingReplyEventHandler</a></td><td width="50%">
+            Someone has replied to a Ctcp ping request sent by this client.
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.CtcpPingRequestEventHandler.html">CtcpPingRequestEventHandler</a></td><td width="50%">
+            Someone has sent a Ctcp Ping request.
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.CtcpReplyEventHandler.html">CtcpReplyEventHandler</a></td><td width="50%">
+            Someone has replied to a Ctcp request sent by this client.
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.CtcpRequestEventHandler.html">CtcpRequestEventHandler</a></td><td width="50%">
+            Someone has sent a Ctcp request.
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.DccChatRequestEventHandler.html">DccChatRequestEventHandler</a></td><td width="50%">
+            Someone has requested a DCC chat session.
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.DccGetRequestEventHandler.html">DccGetRequestEventHandler</a></td><td width="50%">
+            A remote user has requested a file. To respond
+            use <a href="Sharkbite.Irc.DccFileSession.Send.html">Send</a> with the relevant information.
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.DccSendRequestEventHandler.html">DccSendRequestEventHandler</a></td><td width="50%">
+            Another user has offered to send a file.
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.DisconnectedEventHandler.html">DisconnectedEventHandler</a></td><td width="50%">
+            This connection has been closed 
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.DisconnectingEventHandler.html">DisconnectingEventHandler</a></td><td width="50%">
+            This connection is about to be closed 
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.ErrorMessageEventHandler.html">ErrorMessageEventHandler</a></td><td width="50%">
+            Error messages from the IRC server.
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.FileTransferCompletedEventHandler.html">FileTransferCompletedEventHandler</a></td><td width="50%">
+            A file was succefully transfered.
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.FileTransferInterruptedEventHandler.html">FileTransferInterruptedEventHandler</a></td><td width="50%">
+            Something happened to stop the transfer before it was completed. Normally
+            this will be due to one of the sides canceling the transfer.
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.FileTransferProgressEventHandler.html">FileTransferProgressEventHandler</a></td><td width="50%">
+            Called for each successful data block transfer. This allows the developer
+            to show a transfer progress display of some kind.
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.FileTransferStartedEventHandler.html">FileTransferStartedEventHandler</a></td><td width="50%">
+            The file transfer connection has been successfully opened and the data
+            transfer has begun.
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.FileTransferTimeoutEventHandler.html">FileTransferTimeoutEventHandler</a></td><td width="50%">
+            There has been no activity in this session for the timeout period. The 
+            session is automatically closed and this event is raised. 
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.InfoEventHandler.html">InfoEventHandler</a></td><td width="50%">
+            The response to an <a href="Sharkbite.Irc.Sender.Info_overload_1.html">Info</a> request.
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.InviteEventHandler.html">InviteEventHandler</a></td><td width="50%">
+            The user has been invited to a channel.
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.InviteSentEventHandler.html">InviteSentEventHandler</a></td><td width="50%">
+            An Invite message was successfully sent to another user. 
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.IsonEventHandler.html">IsonEventHandler</a></td><td width="50%">
+            The response to a <a href="Sharkbite.Irc.Sender.Ison.html">Ison</a> request.
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.JoinEventHandler.html">JoinEventHandler</a></td><td width="50%">
+            Someone has joined a channel.
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.KickEventHandler.html">KickEventHandler</a></td><td width="50%">
+            Someone has been kicked from a channel. 
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.KillEventHandler.html">KillEventHandler</a></td><td width="50%">
+            Someone was disconnected from the server via a Kill.
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.LinksEventHandler.html">LinksEventHandler</a></td><td width="50%">
+            The response to a <a href="Sharkbite.Irc.Sender.Links_overload_1.html">Links</a> request.
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.ListEventHandler.html">ListEventHandler</a></td><td width="50%">
+            The response to a <a href="Sharkbite.Irc.Sender.List.html">List</a> request.
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.LusersEventHandler.html">LusersEventHandler</a></td><td width="50%">
+            The response to a <a href="Sharkbite.Irc.Sender.Lusers_overload_1.html">Lusers</a> request.
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.MotdEventHandler.html">MotdEventHandler</a></td><td width="50%">
+            The server's "Message of the Day" if any.
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.NamesEventHandler.html">NamesEventHandler</a></td><td width="50%">
+            The response to a <a href="Sharkbite.Irc.Sender.Names.html">Names</a> request.
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.NickErrorEventHandler.html">NickErrorEventHandler</a></td><td width="50%">
+            Called when a nick change fails.
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.NickEventHandler.html">NickEventHandler</a></td><td width="50%">
+            A user changed his nickname.
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.PartEventHandler.html">PartEventHandler</a></td><td width="50%">
+            Someone has left a channel. 
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.PingEventHandler.html">PingEventHandler</a></td><td width="50%">
+            Called when a server sends a keep-alive Ping.
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.PrivateActionEventHandler.html">PrivateActionEventHandler</a></td><td width="50%">
+            A private action message was sent to the user.
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.PrivateMessageEventHandler.html">PrivateMessageEventHandler</a></td><td width="50%">
+            A private message was sent to the user.
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.PrivateNoticeEventHandler.html">PrivateNoticeEventHandler</a></td><td width="50%">
+            A private Notice type message was sent to the user.
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.PublicMessageEventHandler.html">PublicMessageEventHandler</a></td><td width="50%">
+            A public message was sent to a channel.
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.PublicNoticeEventHandler.html">PublicNoticeEventHandler</a></td><td width="50%">
+            A Notice type message was sent to a channel.
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.QuitEventHandler.html">QuitEventHandler</a></td><td width="50%">
+            Someone has quit IRC.
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.RawMessageReceivedEventHandler.html">RawMessageReceivedEventHandler</a></td><td width="50%">
+            The full unparsed text messages received from the IRC server. It
+            includes all messages received except for those exchanged during a DCC chat.
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.RawMessageSentEventHandler.html">RawMessageSentEventHandler</a></td><td width="50%">
+            The full unparsed text messages sent to the IRC server. It
+            includes all messages sent except for those exchanged during a DCC chat.
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.RegisteredEventHandler.html">RegisteredEventHandler</a></td><td width="50%">
+            Connection with IRC server is open and registered.
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.ReplyEventHandler.html">ReplyEventHandler</a></td><td width="50%">
+            Messages that are not handled by other events and are not errors.
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.StatsEventHandler.html">StatsEventHandler</a></td><td width="50%">
+            The response to a <a href="Sharkbite.Irc.Sender.Stats_overload_1.html">Stats</a> request.
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.TimeEventHandler.html">TimeEventHandler</a></td><td width="50%">
+            The response to a <a href="Sharkbite.Irc.Sender.Time_overload_1.html">Time</a> request.
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.TopicEventHandler.html">TopicEventHandler</a></td><td width="50%">
+            A channel's topic has changed.
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.TopicRequestEventHandler.html">TopicRequestEventHandler</a></td><td width="50%">
+            The response to a <a href="Sharkbite.Irc.Sender.RequestTopic.html">RequestTopic</a> command.
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.UserModeChangeEventHandler.html">UserModeChangeEventHandler</a></td><td width="50%">
+            This user's mode has changed.
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.UserModeRequestEventHandler.html">UserModeRequestEventHandler</a></td><td width="50%">
+            The response to a <a href="Sharkbite.Irc.Sender.RequestUserModes.html">RequestUserModes</a> command for this user.
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.VersionEventHandler.html">VersionEventHandler</a></td><td width="50%">
+            The response to a <a href="Sharkbite.Irc.Sender.Version_overload_1.html">Version</a> request.
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.WhoEventHandler.html">WhoEventHandler</a></td><td width="50%">
+            The response to a <a href="Sharkbite.Irc.Sender.Who.html">Who</a> request.
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.WhoisEventHandler.html">WhoisEventHandler</a></td><td width="50%">
+            The response to a <a href="Sharkbite.Irc.Sender.Whois.html">Whois</a> request.
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.WhowasEventHandler.html">WhowasEventHandler</a></td><td width="50%">
+            The response to a <a href="Sharkbite.Irc.Sender.Whowas_overload_1.html">Whowas</a> request.
+            </td></tr></table></div><h3 class="dtH3">Enumerations</h3><div class="tablediv"><table class="dtTABLE" cellspacing="0"><tr valign="top"><th width="50%">Enumeration</th><th width="50%">Description</th></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.ChannelMode.html">ChannelMode</a></td><td width="50%">
+            Possible channel modes.
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.MircColor.html">MircColor</a></td><td width="50%">
+            All recognized mIRC colors.
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.ModeAction.html">ModeAction</a></td><td width="50%">
+            Whether a mode has been added or removed.
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.ReplyCode.html">ReplyCode</a></td><td width="50%">
+            Numeric message codes taken from RFC 2812
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.StatsQuery.html">StatsQuery</a></td><td width="50%">
+            The possible stats message query parameters.
+            </td></tr><tr valign="top"><td width="50%"><a href="Sharkbite.Irc.UserMode.html">UserMode</a></td><td width="50%">
+            The possible user modes.
+            </td></tr></table></div><hr><div id="footer"><p><a>Aaron Hunter</a></p><p></p></div></div></body></html>

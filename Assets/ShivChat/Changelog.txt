@@ -1,0 +1,9 @@
+V1.0
+-Initial Release
+
+V1.1
+-Added text color support
+-Added Windows Store Apps platform support
+-Removed CTCP and DCC for Windows Store Apps
+-Fixed: extra space on the start of a private message
+-Removed all warnings

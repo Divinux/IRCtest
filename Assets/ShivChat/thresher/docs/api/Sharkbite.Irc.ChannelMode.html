@@ -1,0 +1,124 @@
+﻿<html dir="LTR"><head><META http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5"><title>ChannelMode Enumeration</title><xml></xml><link rel="stylesheet" type="text/css" href="MSDN.css"></head><body id="bodyID" class="dtBODY"><div id="nsbanner"><div id="bannerrow1"><table class="bannerparthead" cellspacing="0"><tr id="hdr"><td class="runninghead">Thresher 1.2 Class Documentation</td><td class="product"></td></tr></table></div><div id="TitleRow"><h1 class="dtH1">ChannelMode Enumeration</h1></div></div><div id="nstext"><p>
+            Possible channel modes.
+            </p><div class="syntax"><span class="lang">[Visual Basic]</span><br>Public Enum ChannelMode</div><div class="syntax"><span class="lang">[C#]</span><div>public enum ChannelMode</div></div><h4 class="dtH4">Members</h4><div class="tablediv"><table class="dtTABLE" cellspacing="0"><tr valign="top"><th width="50%">Member Name</th><th width="50%">Description</th></tr>
+<tr valign="top"><td width="50%"><b>ChannelCreator</b></td><td width="50%">
+            The mode 'O' is only used in conjunction with "safe channels" and
+            SHALL NOT be manipulated by users. Servers use it to give the user
+            creating the channel the status of "channel creator".
+            </td></tr>
+<tr valign="top"><td width="50%"><b>ChannelOperator</b></td><td width="50%">
+            The mode 'o' is used to toggle the operator status of a channel
+            member. 
+            	
+            Should include a nick or user mask parameter.
+            </td></tr>
+<tr valign="top"><td width="50%"><b>HalfChannelOperator</b></td><td width="50%">
+            The mode 'h' is used to toggle the non-standard but common half-operator status of a channel
+            member. 
+            	
+            Should include a nick or user mask parameter.
+            </td></tr>
+<tr valign="top"><td width="50%"><b>Voice</b></td><td width="50%">
+            The mode 'v' is used to give and take voice privilege to/from a
+            channel member. Users with this privilege can talk on moderated
+            channels. 
+            	
+            Should include a nick or user mask parameter.
+            </td></tr>
+<tr valign="top"><td width="50%"><b>Anonymous</b></td><td width="50%">
+            The channel flag 'a' defines an anonymous channel. This means that
+            when a message sent to the channel is sent by the server to users,
+            and the origin is a user, then it MUST be masked. 
+            	
+            No param required.
+            </td></tr>
+<tr valign="top"><td width="50%"><b>InviteOnly</b></td><td width="50%">
+            When the channel flag 'i' is set, new members are only accepted if
+            their mask matches Invite-list or they have been
+            invited by a channel operator. This flag also restricts the usage of
+            the INVITE command to channel operators.
+            
+            No param required.
+            </td></tr>
+<tr valign="top"><td width="50%"><b>Moderated</b></td><td width="50%">
+            The channel flag 'm' is used to control who may speak on a channel.
+            When it is set, only channel operators, and members who have been
+            given the voice privilege may send messages to the channel.
+            
+            No param required.
+            </td></tr>
+<tr valign="top"><td width="50%"><b>NoOutside</b></td><td width="50%">
+            When the channel flag 'n' is set, only channel members MAY send
+            messages to the channel.
+            	
+            No param required
+            </td></tr>
+<tr valign="top"><td width="50%"><b>Quiet</b></td><td width="50%">
+            The channel flag 'q' is for use by servers only. When set, it
+            restricts the type of data sent to users about the channel
+            operations: other user joins, parts and nick changes are not sent.
+            From a user's point of view, the channel contains only one user.
+            </td></tr>
+<tr valign="top"><td width="50%"><b>Private</b></td><td width="50%">
+            The channel flag 'p' is used to mark a channel "private" and the
+            channel flag 's' to mark a channel "secret". Both properties are
+            similar and conceal the existence of the channel from other users.
+            	
+            No param required.
+            </td></tr>
+<tr valign="top"><td width="50%"><b>Secret</b></td><td width="50%">
+            When a channel is "secret", in addition to the restrictions of Private, the
+            server will act as if the channel does not exist for queries like the
+            TOPIC, LIST, NAMES commands. Note that there is one exception to
+            this rule: servers will correctly reply to the MODE command.
+            Finally, secret channels are not accounted for in the reply to the
+            LUSERS command when the mask parameter is specified.
+            	
+            No param required.
+            </td></tr>
+<tr valign="top"><td width="50%"><b>ServerReop</b></td><td width="50%">
+            The channel flag 'r' is only available on channels which name begins
+            with the character '!' and MAY only be toggled by the "channel
+            creator".
+            	
+            No param required.
+            </td></tr>
+<tr valign="top"><td width="50%"><b>TopicSettable</b></td><td width="50%">
+            The channel flag 't' is used to restrict the usage of the TOPIC
+            command to channel operators.
+            
+            No param required.
+            </td></tr>
+<tr valign="top"><td width="50%"><b>Password</b></td><td width="50%">
+            When a channel key is set (by using the mode 'k'), servers MUST
+            reject their local users request to join the channel unless this key
+            is given.
+            	
+            Param is the channel password.
+            </td></tr>
+<tr valign="top"><td width="50%"><b>UserLimit</b></td><td width="50%">
+            A user limit may be set on channels by using the channel flag 'l'.
+            When the limit is reached, servers MUST forbid their local users to
+            join the channel.
+            	
+            Param is a whole number indicating the max number of users.
+            </td></tr>
+<tr valign="top"><td width="50%"><b>Ban</b></td><td width="50%">
+            When a user requests to join a channel, his local server checks if
+            the user's address matches any of the ban masks set for the channel.
+            If a match is found, the user request is denied unless the address
+            also matches an exception mask set for the channel.
+            
+            Param is a nick or user mask.
+            </td></tr>
+<tr valign="top"><td width="50%"><b>Exception</b></td><td width="50%">
+            An error ocurred.
+            </td></tr>
+<tr valign="top"><td width="50%"><b>Invitation</b></td><td width="50%">
+            For channels which have the invite-only flag set, users whose 
+            address matches an invitation mask set for the channel are 
+            allowed to join the channel without any invitation.
+            
+            Param is a nick or user mask.
+            </td></tr></table></div><h4 class="dtH4">Requirements</h4><p><b>Namespace: </b><a href="Sharkbite.Irc.html">Sharkbite.Irc</a></p><p><b>Assembly: </b>Sharkbite.Thresher (in Sharkbite.Thresher.dll)
+					</p><h4 class="dtH4">See Also</h4><p><a href="Sharkbite.Irc.html">Sharkbite.Irc Namespace</a></p><object type="application/x-oleobject" classid="clsid:1e2a7bd0-dab9-11d0-b93a-00c04fc99f9e" viewastext="true" style="display: none;"><param name="Keyword" value="ChannelMode enumeration"><param name="Keyword" value="Sharkbite.Irc.ChannelMode enumeration"><param name="Keyword" value="ChannelCreator enumeration member"><param name="Keyword" value="ChannelMode.ChannelCreator enumeration member"><param name="Keyword" value="ChannelOperator enumeration member"><param name="Keyword" value="ChannelMode.ChannelOperator enumeration member"><param name="Keyword" value="HalfChannelOperator enumeration member"><param name="Keyword" value="ChannelMode.HalfChannelOperator enumeration member"><param name="Keyword" value="Voice enumeration member"><param name="Keyword" value="ChannelMode.Voice enumeration member"><param name="Keyword" value="Anonymous enumeration member"><param name="Keyword" value="ChannelMode.Anonymous enumeration member"><param name="Keyword" value="InviteOnly enumeration member"><param name="Keyword" value="ChannelMode.InviteOnly enumeration member"><param name="Keyword" value="Moderated enumeration member"><param name="Keyword" value="ChannelMode.Moderated enumeration member"><param name="Keyword" value="NoOutside enumeration member"><param name="Keyword" value="ChannelMode.NoOutside enumeration member"><param name="Keyword" value="Quiet enumeration member"><param name="Keyword" value="ChannelMode.Quiet enumeration member"><param name="Keyword" value="Private enumeration member"><param name="Keyword" value="ChannelMode.Private enumeration member"><param name="Keyword" value="Secret enumeration member"><param name="Keyword" value="ChannelMode.Secret enumeration member"><param name="Keyword" value="ServerReop enumeration member"><param name="Keyword" value="ChannelMode.ServerReop enumeration member"><param name="Keyword" value="TopicSettable enumeration member"><param name="Keyword" value="ChannelMode.TopicSettable enumeration member"><param name="Keyword" value="Password enumeration member"><param name="Keyword" value="ChannelMode.Password enumeration member"><param name="Keyword" value="UserLimit enumeration member"><param name="Keyword" value="ChannelMode.UserLimit enumeration member"><param name="Keyword" value="Ban enumeration member"><param name="Keyword" value="ChannelMode.Ban enumeration member"><param name="Keyword" value="Exception enumeration member"><param name="Keyword" value="ChannelMode.Exception enumeration member"><param name="Keyword" value="Invitation enumeration member"><param name="Keyword" value="ChannelMode.Invitation enumeration member"></object><hr><div id="footer"><p><a>Aaron Hunter</a></p><p>Generated from assembly Sharkbite.Thresher [1.2.0.0]</p></div></div></body></html>
